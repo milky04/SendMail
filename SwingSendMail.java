@@ -21,7 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class Swing extends JFrame implements ActionListener {
+public class SwingSendMail extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JTextField nameTextField;
@@ -41,7 +41,7 @@ public class Swing extends JFrame implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Swing frame = new Swing();
+					SwingSendMail frame = new SwingSendMail();
 					frame.setVisible(true);
 					frame.setResizable(false);
 				} catch (Exception e) {
@@ -51,7 +51,7 @@ public class Swing extends JFrame implements ActionListener {
 		});
 	}
 
-	public Swing() {
+	public SwingSendMail() {
 		setTitle( "Yahooメール定型文の送信" );
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 340, 172);
