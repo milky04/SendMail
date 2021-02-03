@@ -51,7 +51,7 @@ public class SendMail extends JFrame implements ActionListener {
 		});
 	}
 
-	// フレームの作成(GUIの作成？)
+	// フレームの作成
 	public SendMail() {
 		setTitle( "Yahooメール定型文の送信" );
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -85,7 +85,7 @@ public class SendMail extends JFrame implements ActionListener {
 		addressTextField.setColumns(10);
 	}
 
-	// メール送信の処理(mailSendProcess?)
+	// メール送信の処理
 	public void sendProcess() {
 	    try {
 	        // メール送信のプロパティ設定
