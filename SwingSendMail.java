@@ -21,7 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class SwingSendMail extends JFrame implements ActionListener {
+public class SendMail extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JTextField nameTextField;
@@ -41,7 +41,7 @@ public class SwingSendMail extends JFrame implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SwingSendMail frame = new SwingSendMail();
+					SendMail frame = new SendMail();
 					frame.setVisible(true);
 					frame.setResizable(false);
 				} catch (Exception e) {
@@ -51,7 +51,8 @@ public class SwingSendMail extends JFrame implements ActionListener {
 		});
 	}
 
-	public SwingSendMail() {
+	// フレームの作成(GUIの作成？)
+	public SendMail() {
 		setTitle( "Yahooメール定型文の送信" );
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 340, 172);
@@ -84,7 +85,8 @@ public class SwingSendMail extends JFrame implements ActionListener {
 		addressTextField.setColumns(10);
 	}
 
-	public void SendMail() {
+	// メール送信の処理(mailSendProcess?)
+	public void sendProcess() {
 	    try {
 	        // メール送信のプロパティ設定
 	        Properties props = new Properties();
@@ -135,6 +137,7 @@ public class SwingSendMail extends JFrame implements ActionListener {
 	    }
 	}
 
+		// 送信ボタンを押した後の処理
 		public void actionPerformed(ActionEvent e) {
 			destinationAddress = addressTextField.getText() + "@yahoo.co.jp";
 			destinationName = nameTextField.getText();
@@ -143,7 +146,7 @@ public class SwingSendMail extends JFrame implements ActionListener {
 		    } else if (destinationAddress.length() == 12) {
 			    JOptionPane.showMessageDialog(this, "相手のYahooメールアドレスが入力されていません");
 		    } else {
-				SendMail();
+				sendProcess();
 			    JOptionPane.showMessageDialog(this, destinationName + "さんに送信しました");
 		    };
 		    nameTextField.setText("");
