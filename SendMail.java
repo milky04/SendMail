@@ -26,10 +26,10 @@ public class SendMail extends JFrame implements ActionListener {
 	private JPanel contentPane;
 	private JTextField nameTextField;
 	private JTextField addressTextField;
-    // メールの送信先はYahooメール。送信元もYahooメール
-	private String myID = "自分のYahooID";
-	private String myPassword = "自分のYahooパスワード";
-	private String myAddress = "自分のYahooメールアドレス";
+    // メールの送信元はgmail
+	private String myID = "自分のgmailID";
+	private String myPassword = "自分のgmailパスワード";
+	private String myAddress = "自分のgmailアドレス";
 	private String myName = "自分の名前";
 	private String destinationAddress;
 	private String destinationName;
@@ -53,7 +53,7 @@ public class SendMail extends JFrame implements ActionListener {
 
 	// フレームの作成
 	public SendMail() {
-		setTitle( "Yahooメール定型文の送信" );
+		setTitle( "gmail定型文の送信" );
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 340, 172);
 		contentPane = new JPanel();
@@ -65,7 +65,7 @@ public class SendMail extends JFrame implements ActionListener {
 		nameLabel.setBounds(12, 10, 300, 13);
 		contentPane.add(nameLabel);
 
-		JLabel addressLabel = new JLabel("相手のYahooメールアドレス(@以下除く)");
+		JLabel addressLabel = new JLabel("相手のメールアドレス(@以下含む)");
 		addressLabel.setBounds(12, 57, 300, 13);
 		contentPane.add(addressLabel);
 
@@ -90,7 +90,7 @@ public class SendMail extends JFrame implements ActionListener {
 	    try {
 	        // メール送信のプロパティ設定
 	        Properties props = new Properties();
-	        props.put("mail.smtp.host", "smtp.mail.yahoo.co.jp");
+	        props.put("mail.smtp.host", "smtp.gmail.com");
 	        props.put("mail.smtp.port", "587");
 	        props.put("mail.smtp.auth", "true");
 	        props.put("mail.transport.protocol", "smtp");
@@ -139,12 +139,12 @@ public class SendMail extends JFrame implements ActionListener {
 
 		// 送信ボタンを押した後の処理
 		public void actionPerformed(ActionEvent e) {
-			destinationAddress = addressTextField.getText() + "@yahoo.co.jp";
+			destinationAddress = addressTextField.getText();
 			destinationName = nameTextField.getText();
 		    if (destinationName.length() == 0) {
 			    JOptionPane.showMessageDialog(this, "相手の名前が入力されていません");
-		    } else if (destinationAddress.length() == 12) {
-			    JOptionPane.showMessageDialog(this, "相手のYahooメールアドレスが入力されていません");
+		    } else if (destinationAddress.length() == 0) {
+			    JOptionPane.showMessageDialog(this, "相手のメールアドレスが入力されていません");
 		    } else {
 				sendProcess();
 			    JOptionPane.showMessageDialog(this, destinationName + "さんに送信しました");
